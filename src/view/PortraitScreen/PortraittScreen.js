@@ -4,14 +4,15 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
-  TextInput,
   ScrollView
 } from 'react-native';
 import Sidebar from '../../Components/Sidebar/Sidebar';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import AntIcon from 'react-native-vector-icons/AntDesign';
+
 import Card from '../../Components/Card/Card';
 
-class AccountDetailsScreen extends Component {
+class PortraitScreen extends Component {
   render() {
     const { navigation } = this.props;
     return (
@@ -21,7 +22,7 @@ class AccountDetailsScreen extends Component {
             <View style={{ height: '100%' }}>
               <View style={styles.GroupSearchArea}>
                 <View style={styles.flexerRow}>
-                  <Text style={styles.contactHeading}>Account details</Text>
+                  <Text style={styles.contactHeading}>Your portrait</Text>
                 </View>
                 <TouchableOpacity
                   onPress={() => navigation.navigate('StartupScreen')}>
@@ -35,22 +36,15 @@ class AccountDetailsScreen extends Component {
                   <Card />
                 </View>
               </View>
-              <View style={styles.flexerRowSpaceBetween}>
-                <Text style={styles.text}>Birhtday (Day/Month):</Text>
-                <TextInput
-                  style={styles.smallFeildInput}
-                  placeholder="optional"
-                />
-              </View>
-
-              <View style={styles.flexerRowSpaceBetween}>
-                <Text style={styles.text}>Phone:</Text>
-                <TextInput style={styles.fieldInput} placeholder="optional" />
-              </View>
-
-              <View style={styles.flexerRowSpaceBetween}>
-                <Text style={styles.text}>Location:</Text>
-                <TextInput style={styles.fieldInput} placeholder="optional" />
+              <View style={styles.flexerColoumn}>
+                <View style={styles.flexerColoumn}>
+                  <View style={styles.icon}>
+                    <AntIcon name="question" size={100} color="#808080" />
+                  </View>
+                  <Text style={styles.greyText}>
+                    Touch to add your portrait
+                  </Text>
+                </View>
               </View>
               <View
                 style={{
@@ -60,7 +54,7 @@ class AccountDetailsScreen extends Component {
                   marginTop: 40
                 }}>
                 <TouchableOpacity
-                  onPress={() => navigation.navigate('PortraitScreen')}>
+                  onPress={() => navigation.navigate('YourPhotosScreen')}>
                   <View style={styles.btn}>
                     <Text style={styles.textWhite}>Next</Text>
                   </View>
@@ -185,9 +179,10 @@ const styles = StyleSheet.create({
     fontSize: 20
   },
 
-  blueText: {
-    fontSize: 18,
-    color: '#0071AB'
+  greyText: {
+    fontSize: 20,
+    color: '#919090',
+    fontWeight: 'bold'
   },
   btn: {
     paddingVertical: 15,
@@ -208,7 +203,19 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     flexDirection: 'row'
+  },
+  icon: {
+    height: 150,
+    width: 150,
+    borderRadius: 75,
+    borderWidth: 4,
+    borderColor: '#808080',
+    backgroundColor: '#E9E9E9',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 30
   }
 });
 
-export default AccountDetailsScreen;
+export default PortraitScreen;

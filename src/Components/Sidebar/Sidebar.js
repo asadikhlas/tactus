@@ -31,7 +31,7 @@ class Sidebar extends Component {
       {
         name: 'Share',
         icon: Svg.CameraIcon,
-        navigate: 'Share'
+        navigate: 'Home'
       }
     ];
     return (

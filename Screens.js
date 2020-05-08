@@ -22,11 +22,34 @@ import LoginScreen from './src/view/LoginScreen/LoginScreen';
 import StartupScreen from './src/view/StartupScreen/StartupScreen';
 import SignupScreen from './src/view/SignupScreen/SignupScreen';
 import AccountDetailsScreen from './src/view/AccountDetailsScreen/AccountDetailsScreen';
+import PortraitScreen from './src/view/PortraitScreen/PortraittScreen';
+import YourPhotosScreen from './src/view/YourPhotosScreen/YourPhotosScreen';
 
 export const Screens = [
   {
+    name: 'StartupScreen',
+    component: StartupScreen,
+    options: {
+      headerShown: false
+    }
+  },
+  {
     name: 'SignupScreen',
     component: SignupScreen,
+    options: {
+      headerShown: false
+    }
+  },
+  {
+    name: 'PortraitScreen',
+    component: PortraitScreen,
+    options: {
+      headerShown: false
+    }
+  },
+  {
+    name: 'YourPhotosScreen',
+    component: YourPhotosScreen,
     options: {
       headerShown: false
     }
@@ -38,13 +61,7 @@ export const Screens = [
       headerShown: false
     }
   },
-  {
-    name: 'StartupScreen',
-    component: StartupScreen,
-    options: {
-      headerShown: false
-    }
-  },
+
   {
     name: 'LoginScreen',
     component: LoginScreen,

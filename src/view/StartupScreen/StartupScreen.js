@@ -18,9 +18,12 @@ class StartupScreen extends Component {
           <Logo />
           <View style={{ marginTop: 50, width: '100%' }}>
             <View style={styles.flexer}>
-              <View style={styles.btn}>
-                <Text style={styles.text}>New account</Text>
-              </View>
+              <TouchableOpacity
+                onPress={() => navigation.navigate('SignupScreen')}>
+                <View style={styles.btn}>
+                  <Text style={styles.text}>New account</Text>
+                </View>
+              </TouchableOpacity>
               <TouchableOpacity
                 onPress={() => navigation.navigate('LoginScreen')}>
                 <View style={styles.btn}>

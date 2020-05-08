@@ -42,9 +42,12 @@ class LoginScreen extends Component {
               <View style={styles.greyBtn}>
                 <Text style={styles.text}>Forget password</Text>
               </View>
-              <View style={styles.btn}>
-                <Text style={styles.text}>New account</Text>
-              </View>
+              <TouchableOpacity
+                onPress={() => navigation.navigate('SignupScreen')}>
+                <View style={styles.btn}>
+                  <Text style={styles.text}>New account</Text>
+                </View>
+              </TouchableOpacity>
             </View>
           </View>
         </View>

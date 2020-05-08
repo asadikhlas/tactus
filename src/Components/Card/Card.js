@@ -7,11 +7,11 @@ const Card = (props) => {
     <View>
       <View style={styles.callRejected}>
         <View style={styles.card}>
-          <Image source={avatar} style={{ marginRight: 30 }} />
+          <Image source={avatar} />
           <Text style={styles.text}>
             Welcome to your new Tactu account. Please add a few more details
             about yourself to make connecting with your family and friends
-            easier.{' '}
+            easier.
           </Text>
         </View>
       </View>
@@ -36,7 +36,9 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 20,
     fontWeight: '600',
-    width: 'auto'
+    width: 'auto',
+    marginLeft: 60,
+    maxWidth: 350
   },
   card: {
     display: 'flex',
@@ -71,6 +73,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.34,
     shadowRadius: 6.27,
     elevation: 10,
+    padding: 20,
     width: '80%'
   },
   undo: {

@@ -4,15 +4,20 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
-  TextInput,
   ScrollView
 } from 'react-native';
 import Sidebar from '../../Components/Sidebar/Sidebar';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import Card from '../../Components/Card/Card';
 
-class AccountDetailsScreen extends Component {
+import Card from '../../Components/Card/Card';
+import { TextInput } from 'react-native-gesture-handler';
+
+class YourPhotosScreen extends Component {
+  state = {
+    activeTab: 'Share'
+  };
   render() {
+    const tabs = ['Share', 'Instagram', 'Facebook'];
     const { navigation } = this.props;
     return (
       <View style={styles.container}>
@@ -21,7 +26,7 @@ class AccountDetailsScreen extends Component {
             <View style={{ height: '100%' }}>
               <View style={styles.GroupSearchArea}>
                 <View style={styles.flexerRow}>
-                  <Text style={styles.contactHeading}>Account details</Text>
+                  <Text style={styles.contactHeading}>Your photos</Text>
                 </View>
                 <TouchableOpacity
                   onPress={() => navigation.navigate('StartupScreen')}>
@@ -30,28 +35,59 @@ class AccountDetailsScreen extends Component {
                   </View>
                 </TouchableOpacity>
               </View>
-              <View>
-                <View style={{ marginBottom: 10 }}>
-                  <Card />
+              <View style={{ marginBottom: 40 }}>
+                <Card />
+              </View>
+              <View style={styles.flexerRow}>
+                {tabs.map((item) => (
+                  <TouchableOpacity
+                    onPress={() => this.setState({ activeTab: item })}>
+                    <View
+                      style={
+                        this.state.activeTab === item
+                          ? styles.box
+                          : styles.boxUnactive
+                      }>
+                      <Text
+                        style={
+                          this.state.activeTab === item
+                            ? styles.WhiteText
+                            : styles.BlackText
+                        }>
+                        {item}
+                      </Text>
+                    </View>
+                  </TouchableOpacity>
+                ))}
+              </View>
+              {this.state.activeTab === 'Share' && (
+                <View style={styles.flexerColoumn}>
+                  <View style={styles.flexerColoumn}>
+                    <View style={styles.icon}>
+                      <Icon name="camera" size={100} color="#808080" />
+                    </View>
+                    <Text style={styles.greyText}>Touch to share pictures</Text>
+                  </View>
                 </View>
-              </View>
-              <View style={styles.flexerRowSpaceBetween}>
-                <Text style={styles.text}>Birhtday (Day/Month):</Text>
-                <TextInput
-                  style={styles.smallFeildInput}
-                  placeholder="optional"
-                />
-              </View>
+              )}
 
-              <View style={styles.flexerRowSpaceBetween}>
-                <Text style={styles.text}>Phone:</Text>
-                <TextInput style={styles.fieldInput} placeholder="optional" />
-              </View>
+              {this.state.activeTab === 'Instagram' && (
+                <View style={styles.flexerColoumn}>
+                  <TextInput
+                    style={styles.fieldInput}
+                    placeholder="Instagram user name"
+                  />
+                </View>
+              )}
 
-              <View style={styles.flexerRowSpaceBetween}>
-                <Text style={styles.text}>Location:</Text>
-                <TextInput style={styles.fieldInput} placeholder="optional" />
-              </View>
+              {this.state.activeTab === 'Facebook' && (
+                <View style={styles.flexerColoumn}>
+                  <TextInput
+                    style={styles.fieldInput}
+                    placeholder="Facebook user name"
+                  />
+                </View>
+              )}
               <View
                 style={{
                   display: 'flex',
@@ -59,10 +95,9 @@ class AccountDetailsScreen extends Component {
                   justifyContent: 'center',
                   marginTop: 40
                 }}>
-                <TouchableOpacity
-                  onPress={() => navigation.navigate('PortraitScreen')}>
+                <TouchableOpacity onPress={() => navigation.navigate('Home')}>
                   <View style={styles.btn}>
-                    <Text style={styles.textWhite}>Next</Text>
+                    <Text style={styles.textWhite}>Finish</Text>
                   </View>
                 </TouchableOpacity>
               </View>
@@ -122,6 +157,12 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center'
   },
+  BlackText: {
+    color: 'black',
+    fontWeight: 'bold',
+    fontSize: 20,
+    textAlign: 'center'
+  },
 
   flexerRow: {
     display: 'flex',
@@ -168,10 +209,11 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     alignItems: 'center',
     borderColor: '#707070',
-    width: '50%',
+    width: '70%',
     height: 50,
-    marginTop: 20,
-    fontSize: 20
+    marginTop: 40,
+    fontSize: 20,
+    paddingLeft: 20
   },
   smallFeildInput: {
     margin: 10,
@@ -185,9 +227,10 @@ const styles = StyleSheet.create({
     fontSize: 20
   },
 
-  blueText: {
-    fontSize: 18,
-    color: '#0071AB'
+  greyText: {
+    fontSize: 20,
+    color: '#919090',
+    fontWeight: 'bold'
   },
   btn: {
     paddingVertical: 15,
@@ -208,7 +251,31 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     flexDirection: 'row'
+  },
+  icon: {
+    height: 150,
+    width: 150,
+    borderRadius: 75,
+    borderWidth: 4,
+    borderColor: '#808080',
+    backgroundColor: '#E9E9E9',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 30
+  },
+  box: {
+    padding: 15,
+    width: 'auto',
+    backgroundColor: '#35394A',
+    marginLeft: 10
+  },
+  boxUnactive: {
+    padding: 15,
+    width: 'auto',
+    backgroundColor: '#00000042',
+    marginLeft: 10
   }
 });
 
-export default AccountDetailsScreen;
+export default YourPhotosScreen;
